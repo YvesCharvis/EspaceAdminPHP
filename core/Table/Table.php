@@ -43,6 +43,13 @@ class Table
 	public function find($id)
 	{
 		return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
+	}	
+
+
+
+	public function delete($id)
+	{
+		return $this->query("DELETE FROM {$this->table} WHERE id = ?", [$id], true);
 	}
 
 	public function update($id, $fields)

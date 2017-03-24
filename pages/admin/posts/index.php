@@ -21,8 +21,16 @@ $posts = App::getInstance()->getTable('Post')->all();
 			
 		<td><?= $post->id; ?></td>
 		<td><?= $post->titre; ?></td>
-		<td><a href="admin.php?p=posts.single&id=<?=$post->id;?>"><button>edit</button></a></td>
-			
+		<td><a href="admin.php?p=posts.single&id=<?=$post->id;?>"><button>edit</button>
+
+<form method="post" action="admin.php?p=posts.delete" style="display: inline-block;">
+	<input type="hidden" name="id" value="<?= $post->id; ?>">
+	<input class="btn btn-danger" type="submit" name="OK" value="Delete">
+</form>
+			</a>
+		</td>
+
+
 		</tr>
 	<?php endforeach; ?>
 	</tbody>

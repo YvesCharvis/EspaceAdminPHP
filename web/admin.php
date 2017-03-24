@@ -43,6 +43,9 @@ elseif ($page==='posts.single'){
 elseif ($page==='posts.add'){
 	require ROOT.'/pages/admin/posts/postsadd.php';
 }
+elseif ($page==='posts.delete'){
+	require ROOT.'/pages/admin/posts/postsdelete.php';
+}
 
 
 
