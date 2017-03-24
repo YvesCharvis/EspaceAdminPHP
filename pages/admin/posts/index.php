@@ -21,7 +21,7 @@ $posts = App::getInstance()->getTable('Post')->all();
 			
 		<td><?= $post->id; ?></td>
 		<td><?= $post->titre; ?></td>
-		<td><a href="admin.php?p=posts.single"><button>edit</button></a></td>
+		<td><a href="admin.php?p=posts.single&id=<?=$post->id;?>"><button>edit</button></a></td>
 			
 		</tr>
 	<?php endforeach; ?>

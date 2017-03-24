@@ -45,5 +45,19 @@ class Table
 		return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
 	}
 
+	public function update($id, $fields)
+	{
+		$sql_parts=[];
+		$attributes=[];
+		foreach ($fields as $key => $value) {
+			$sql_parts[]= "$key = ?";
+			$attributes[]= $value;
+		}
+		$attributes[]= $id;
+		$sql= implode(',',$sql_parts);
+	
+		return $this->query("UPDATE {$this->table} SET $sql WHERE id = ?", $attributes);
+
+	}
 
 }

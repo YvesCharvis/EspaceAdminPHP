@@ -39,6 +39,13 @@ class MysqlDatabase extends Database
 	public function query($statement, $class_name = null, $one= false){
 
 		$req = $this->getPdo()->query($statement);
+		if (
+			strpos($statement, 'UPDATE' )===0 ||
+			strpos($statement, 'INSERT' )===0 ||
+			strpos($statement, 'DELETE' )===0 
+			) {
+			return $req;
+		}
 		if (is_null($class_name)) {
 			$req->setFetchMode(PDO::FETCH_OBJ);
 			
@@ -57,9 +64,18 @@ class MysqlDatabase extends Database
 					$parametre, 
 					$class_name= null, 
 					$one=false){
+
+
 		
 		$req = $this->getPdo()->prepare($statement);
-		$req->execute($parametre);
+		$res = $req->execute($parametre);
+		if (
+			strpos($statement, 'UPDATE' )===0 ||
+			strpos($statement, 'INSERT' )===0 ||
+			strpos($statement, 'DELETE' )===0 
+			) {
+			return $res;
+		}
 		if (is_null($class_name)) {
 			$req->setFetchMode(PDO::FETCH_OBJ);
 			
