@@ -11,11 +11,21 @@ if (isset($_GET['p'])) {
 }
 
 $app = App::getInstance();
-$auth = new DBAuth($app->getDb);
+$auth = new DBAuth($app->getDb());
+//connexion utilisateurs via login.php
+if ($_POST) {
+	if ($auth->login($_POST['username'], $_POST['password'])) {
+		echo "connecté";
+	}else{
+		header('location: index.php?p=login');
+		exit();
+	}
+}
 
 if (!$auth->logged()) {
 	$app->forbidden();
 }
+$connect = "Disconnect";
 
 ob_start();
 if ($page==='home') {
