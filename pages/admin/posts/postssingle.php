@@ -3,11 +3,16 @@
 
 	if ($_POST) {
 		if (!empty($_POST['id'] && $_POST['titre'] && $_POST['contenu'])) {
-			$app->getTable('post')->update(
+			$res = $app->getTable('post')->update(
 				$_POST['id'], 
 				["titre"=>$_POST['titre'], 
 				"contenu"=>$_POST['contenu']
 				]);
+			if ($res) {
+				?>
+				<div class="alert alert-success">Bien enregistré</div> 
+				<?php
+			}
 		}
 	}
 	$post = $app->getTable('post')->find($_GET['id']);
