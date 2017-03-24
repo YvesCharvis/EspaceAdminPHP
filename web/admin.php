@@ -30,6 +30,8 @@ $connect = "Disconnect";
 ob_start();
 if ($page==='home') {
 	require ROOT.'/pages/admin/index.php';
-}
+}elseif ($page==='posts.edit')
+	require ROOT.'/pages/admin/posts/index.php';
+
 $content = ob_get_clean();
 require ROOT.'/pages/templates/default.php'; 

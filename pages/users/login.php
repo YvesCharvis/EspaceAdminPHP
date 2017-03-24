@@ -10,7 +10,7 @@ if ($auth2->logged()){
 
 <h2>connexion</h2>
 
-
+<hr>
 <div class="row">
 <div class="col-md-4">
 <form method="Post" action="admin.php">

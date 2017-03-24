@@ -2,4 +2,4 @@
 
 
 <h1>Panel Administrateur</h1>
-<p>Bonjour, Administrateur</p>
+<p><a href="admin.php?p=posts.edit">Modifier les post</a></p>
