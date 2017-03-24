@@ -40,6 +40,9 @@ if ($page==='home') {
 elseif ($page==='posts.single'){
 	require ROOT.'/pages/admin/posts/postssingle.php';
 }
+elseif ($page==='posts.add'){
+	require ROOT.'/pages/admin/posts/postsadd.php';
+}
 
 
 

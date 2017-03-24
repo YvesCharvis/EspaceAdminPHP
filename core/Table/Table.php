@@ -60,4 +60,18 @@ class Table
 
 	}
 
+		public function create($fields)
+	{
+		$sql_parts=[];
+		$attributes=[];
+		foreach ($fields as $key => $value) {
+			$sql_parts[]= "$key = ?";
+			$attributes[]= $value;
+		}
+		$sql= implode(',',$sql_parts);
+	
+		return $this->query("INSERT INTO {$this->table} SET $sql", $attributes);
+
+	}
+
 }
