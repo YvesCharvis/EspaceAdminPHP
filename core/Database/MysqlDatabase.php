@@ -36,22 +36,36 @@ class MysqlDatabase extends Database
   		return $this->pdo;
 	}
 
-	public function query($statement, $class_name){
+	public function query($statement, $class_name = null, $one= false){
 
 		$req = $this->getPdo()->query($statement);
-		$req->setFetchMode(PDO::FETCH_CLASS, $class_name);
-		$datas = $req->fetchAll();
+		if (is_null($class_name)) {
+			$req->setFetchMode(PDO::FETCH_OBJ);
+			
+		}else{
+			$req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+		}
+		if ($one===false){
+			$datas= $req->fetchAll();
+		}else{
+			$datas= $req->fetch();
+		}
 		return $datas;
 	}
 	public function prepare(
 					$statement,
 					$parametre, 
-					$class_name, 
+					$class_name= null, 
 					$one=false){
 		
 		$req = $this->getPdo()->prepare($statement);
 		$req->execute($parametre);
-		$req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+		if (is_null($class_name)) {
+			$req->setFetchMode(PDO::FETCH_OBJ);
+			
+		}else{
+			$req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+		}
 		if ($one===false){
 			$datas= $req->fetchAll();
 		}else{
