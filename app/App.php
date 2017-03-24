@@ -47,5 +47,10 @@ class App
 	{
 		header("HTML/1.0 404 Not Found");
 		header('location: index.php?p=404');
+	}		
+	public function forbidden()
+	{
+		header("HTML/1.0 403 Forbidden");
+		header('location: index.php?p=403');
 	}
 }

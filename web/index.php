@@ -18,5 +18,10 @@ if ($page==='home') {
 }elseif ($page==='posts.single') {
 	require ROOT.'/pages/posts/single.php';
 }
+elseif ($page==='403') {
+	require ROOT.'/pages/errors/403.php';
+}elseif ($page==='404') {
+	require ROOT.'/pages/errors/404.php';
+}
 $content = ob_get_clean();
 require ROOT.'/pages/templates/default.php'; 
